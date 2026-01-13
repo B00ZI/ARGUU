@@ -1,8 +1,7 @@
 <x-layout>
    <x-slot name="title">
-    about
+      about
    </x-slot>
-   
    contact
 
 </x-layout>
