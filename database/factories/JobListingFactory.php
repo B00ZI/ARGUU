@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Employer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,8 +20,8 @@ class jobListingFactory extends Factory
         return [
 
         "title"=>fake()->jobTitle() , 
-        "salary"=>fake()->numberBetween(2 , 10)* 1000
-    
+        "salary"=>fake()->numberBetween(2 , 10)* 1000 ,
+        "employer_id"=>Employer::factory()
         ];
     }
 }
