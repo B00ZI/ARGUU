@@ -10,7 +10,7 @@ class Book extends Model
 
     public function Publisher(){
 
-        $this->belongsTo(Publisher::class);
+        return $this->belongsTo(Publisher::class);
     }
 }
 

@@ -8,7 +8,7 @@ class Publisher extends Model
 {
     protected $fillable = ['name' , 'country'] ;
 
-    public function Book(){
-        $this->hasMany(Book::class);
+    public function books(){
+        return $this->hasMany(Book::class);
     }
 }
