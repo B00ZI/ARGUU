@@ -15,7 +15,6 @@ class JobListing extends Model
 
 
     protected $table = "job_listing";
-    protected $primaryKey = 'job_id';
     protected $fillable = ['title', 'salary'];
 
     public function employer(){

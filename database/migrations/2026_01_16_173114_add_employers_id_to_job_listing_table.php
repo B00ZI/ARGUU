@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\Employer ;
+use App\Models\Employer;
 
 return new class extends Migration
 {
@@ -23,7 +23,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('job_listing', function (Blueprint $table) {
-            $table->dropforeignIdFor(Employer::class) ;
+            $table->dropForeign(['employer_id']);
+
+            // Then drop column
+            $table->dropColumn('employer_id');
         });
     }
 };
