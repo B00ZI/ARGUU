@@ -18,8 +18,8 @@ class jobListingFactory extends Factory
     {
         return [
 
-        "title"=>fake()->title() , 
-        "salary"=>fake()->numberBetween(2 , 10)* 100
+        "title"=>fake()->jobTitle() , 
+        "salary"=>fake()->numberBetween(2 , 10)* 1000
     
         ];
     }
