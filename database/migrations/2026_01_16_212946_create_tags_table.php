@@ -21,7 +21,7 @@ return new class extends Migration
 
          Schema::create('job_listing_tag', function (Blueprint $table) {
             
-            $table->foreignIdFor(JobListing::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(JobListing::class)->constrained('job_listing')->cascadeOnDelete();
             $table->foreignIdFor(Tag::class)->constrained()->cascadeOnDelete();
             $table->primary(['job_listing_id', 'tag_id']);
             $table->timestamps();
@@ -33,7 +33,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('job_tag');
-        Schema::dropIfExists('tags');
+      Schema::dropIfExists('job_listing_tag'); 
+    Schema::dropIfExists('tags');
     }
 };

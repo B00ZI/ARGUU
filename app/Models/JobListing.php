@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Employer;
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
@@ -21,5 +22,9 @@ class JobListing extends Model
           
         return $this->belongsTo(Employer::class);
 
+    }
+
+    public function tags(){
+        return $this->belongsToMany(Tag::class ,'job_listing_tag' , 'job_listing_id', 'tag_id' ) ;
     }
 }
