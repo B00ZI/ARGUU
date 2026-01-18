@@ -2,13 +2,13 @@
   <x-slot name="title">
     Create Job
 
-    
-  
-    </x-slot>
+
+
+  </x-slot>
 
   <form action="/jobs" method="POST" class="max-w-2xl mx-auto">
 
-  @csrf
+    @csrf
     <div class="space-y-10">
       <div class="border-b border-gray-200 pb-10">
         <h2 class="text-lg font-semibold text-gray-900">Create a new Job</h2>
@@ -25,6 +25,11 @@
             <div class="mt-2">
               <input id="title" name="title" type="text"
                 class="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none" />
+              @error('title')
+
+              <p class="text-red-700 mt-2  text-sm font-semibold"> {{ $message }}</p>
+
+              @enderror
             </div>
           </div>
 
@@ -36,6 +41,11 @@
             <div class="mt-2">
               <input id="salary" name="salary" type="text"
                 class="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none" />
+              @error('salary')
+
+              <p class="text-red-700 mt-2  text-sm font-semibold"> {{ $message }}</p>
+
+              @enderror
             </div>
           </div>
 
@@ -44,10 +54,9 @@
 
       <!-- Buttons -->
       <div class="flex justify-end gap-3">
-        <a href="/jobs"
-          class="rounded-md bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200">
+        <a href="/jobs" class="rounded-md bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200">
           Cancel
-      </a>
+        </a>
         <button type="submit"
           class="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">
           Create
@@ -55,6 +64,11 @@
       </div>
     </div>
   </form>
+  @error('title')
+
+  {{ $message }}
+
+  @enderror
 
 
 

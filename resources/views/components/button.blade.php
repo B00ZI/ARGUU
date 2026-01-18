@@ -1,0 +1,1 @@
+<a {{ $attributes }} class="bg-gray-500/50 inline-block mt-4   rounded-md px-5 py-2 text-sm font-medium ">{{ $slot }}</a>
