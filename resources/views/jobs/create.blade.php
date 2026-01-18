@@ -23,7 +23,7 @@
               Title
             </label>
             <div class="mt-2">
-              <input id="title" name="title" type="text"
+              <input id="title" name="title" type="text" value="{{ old('title') }}""
                 class="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none" />
               @error('title')
 
@@ -39,7 +39,7 @@
               Salary
             </label>
             <div class="mt-2">
-              <input id="salary" name="salary" type="number"
+              <input id="salary" name="salary" type="number" value="{{ old('salary') }}"
                 class="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none" />
               @error('salary')
 
