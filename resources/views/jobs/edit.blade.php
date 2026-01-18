@@ -1,6 +1,6 @@
 <x-layout>
   <x-slot name="title">
-    Create Job
+    Edit Job  : <span class="text-gray-300 font-semibold">{{ $job->title }}</span> 
 
 
 
@@ -24,6 +24,11 @@
               <input id="title" name="title" value={{ $job->title}} type="text"
               class="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900
               placeholder-gray-400 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none" />
+              @error('title')
+
+              <p class="text-red-700 mt-2  text-sm font-semibold"> {{ $message }}</p>
+
+              @enderror
             </div>
           </div>
 
@@ -36,6 +41,11 @@
               <input id="salary" name="salary" type="text" value={{ $job->salary}}
               class="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900
               placeholder-gray-400 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none" />
+              @error('salary')
+
+              <p class="text-red-700 mt-2  text-sm font-semibold"> {{ $message }}</p>
+
+              @enderror
             </div>
           </div>
 
@@ -45,7 +55,7 @@
       <!-- Buttons -->
 
       <div class="flex justify-between">
-        <button  type="submit" form="delete-job"
+        <button type="submit" form="delete-job"
           class="rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700">
           Delete
         </button>
@@ -66,8 +76,8 @@
   </form>
 
   <form id="delete-job" action="/jobs/{{ $job->id }}" method="POST">
-  @method('DELETE')
-  @csrf
+    @method('DELETE')
+    @csrf
 
   </form>
 </x-layout>

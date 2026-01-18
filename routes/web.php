@@ -41,10 +41,10 @@ Route::get('/jobs/create', function () {
 // action of creating a job 
 
 Route::post('/jobs', function () {
-     
+
     request()->validate([
-         'title'=>['required' , 'min:4' ],
-         'salary'=>['required' , 'min:3',   'integer']
+        'title' => ['required', 'min:4'],
+        'salary' => ['required', 'min:3']
     ]);
 
     Job::create([
@@ -67,6 +67,11 @@ Route::get('/jobs/{id}/edit', function ($id) {
 
 Route::patch('/jobs/{id}', function ($id) {
 
+    request()->validate([
+        'title' => ['required', 'min:4'],
+        'salary' => ['required', 'min:3']
+    ]);
+    
     $job = Job::findOrFail($id);
 
     $job->update([
@@ -81,8 +86,8 @@ Route::patch('/jobs/{id}', function ($id) {
 
 
 Route::delete('/jobs/{id}', function ($id) {
-    
-   
+
+
     $job = Job::findOrFail($id);
     $job->delete();
 
