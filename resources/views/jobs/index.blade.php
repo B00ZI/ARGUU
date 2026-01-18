@@ -1,6 +1,8 @@
 <x-layout>
    <x-slot name="title">
       jobs list
+
+      
    </x-slot>
    <div class="p-5 space-y-4  ">
       @foreach ( $jobs as $job)
