@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\JobsController;
 use Illuminate\Support\Facades\Route;
 use App\Models\JobListing as Job;
 
@@ -16,85 +18,12 @@ Route::view('/contact', 'contact');
 
 
 //index
-Route::get('/jobs', function () {
-
-    return view("jobs.index", [
-
-        'jobs' => Job::with('employer')->latest()->simplePaginate(7)
-    ]);
-});
-
-
-
-//create
-Route::get('/jobs/create', function () {
-
-    return view('jobs.create');
-});
-
-// store
-
-Route::post('/jobs', function () {
-
-    request()->validate([
-        'title' => ['required', 'min:4'],
-        'salary' => ['required', 'min:3']
-    ]);
-
-    Job::create([
-        'title' => request('title'),
-        'salary' => request('salary'),
-        'employer_id' => 1,
-    ]);
-
-    return redirect('/jobs');
-});
+Route::get('/jobs',[JobsController::class , 'index']);
+Route::get('/jobs/create',[JobsController::class , 'create']);
+Route::post('/jobs',[JobsController::class , 'store']);
+Route::get('/jobs/{job}',[JobsController::class , 'show']);
+Route::get('/jobs/{job}/edit',[JobsController::class , 'edit']);
+Route::patch('/jobs/{job}',[JobsController::class , 'update']);
+Route::delete('/jobs/{job}',[JobsController::class , 'destroy']);
 
 
-Route::get('/jobs/{job}/edit', function (Job $job) {
-
-
-    
-    return view('jobs.edit', ['job' => $job]);
-});
-
-
-Route::patch('/jobs/{job}', function (Job $job) {
-
-    request()->validate([
-        'title' => ['required', 'min:4'],
-        'salary' => ['required', 'min:3']
-    ]);
-    
-    
-
-    $job->update([
-        'title' => request('title'),
-        'salary' => request('salary')
-
-    ]);
-
-
-    return redirect("/jobs/{$job->id}");
-});
-
-
-Route::delete('/jobs/{id}', function ($id) {
-
-
-    $job = Job::findOrFail($id);
-    $job->delete();
-
-
-    return redirect("/jobs");
-});
-
-//to show 1 job
-Route::get('/jobs/{id}', function ($id) {
-
-
-
-    $job = Job::find($id);
-
-    return view("jobs.show", ['job' => $job]);
-});
