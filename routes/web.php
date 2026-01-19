@@ -6,22 +6,16 @@ use App\Models\JobListing as Job;
 
 
 
-Route::get('/', function () {
-    return view('home');
-});
 
-Route::get('/about', function () {
-    return view("about");
-});
-
-Route::get('/contact', function () {
-    return view("contact");
-});
+Route::view('/', 'home');
+Route::view('/about', 'about');
+Route::view('/contact', 'contact');
 
 
 
 
-//to get all jobs
+
+//index
 Route::get('/jobs', function () {
 
     return view("jobs.index", [
@@ -32,13 +26,13 @@ Route::get('/jobs', function () {
 
 
 
-//to get the form to creaat  a job
+//create
 Route::get('/jobs/create', function () {
 
     return view('jobs.create');
 });
 
-// action of creating a job 
+// store
 
 Route::post('/jobs', function () {
 
@@ -57,22 +51,22 @@ Route::post('/jobs', function () {
 });
 
 
-Route::get('/jobs/{id}/edit', function ($id) {
+Route::get('/jobs/{job}/edit', function (Job $job) {
 
 
-    $job = Job::find($id);
+    
     return view('jobs.edit', ['job' => $job]);
 });
 
 
-Route::patch('/jobs/{id}', function ($id) {
+Route::patch('/jobs/{job}', function (Job $job) {
 
     request()->validate([
         'title' => ['required', 'min:4'],
         'salary' => ['required', 'min:3']
     ]);
     
-    $job = Job::findOrFail($id);
+    
 
     $job->update([
         'title' => request('title'),
@@ -81,7 +75,7 @@ Route::patch('/jobs/{id}', function ($id) {
     ]);
 
 
-    return redirect("/jobs/{$id}");
+    return redirect("/jobs/{$job->id}");
 });
 
 
