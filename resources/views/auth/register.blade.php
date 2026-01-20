@@ -37,10 +37,10 @@
                     </div>
 
                      <div class="sm:col-span-4">
-                        <x-formlable for="password_password">Verify Password</x-formlable>
+                        <x-formlable for="password_confirmation ">Verify Password</x-formlable>
                         <div class="mt-2">
-                            <x-formInput id="password_password" name="password_password" type="password" value="{{ old('password_password') }}" />
-                            <x-formError name="password_password" />
+                            <x-formInput id="password_confirmation " name="password_confirmation " type="password" value="{{ old('password_confirmation ') }}" />
+                            <x-formError name="password_confirmation " />
                         </div>
                     </div>
 
