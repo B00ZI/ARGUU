@@ -12,3 +12,7 @@ Route::view('/contact', 'contact');
 
 
 Route::resource('jobs', JobsController::class);
+
+Route::get('/login' , function(){
+   return view('login') ;
+});
