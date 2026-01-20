@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\JobsController;
+use App\Http\Controllers\loginController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -13,12 +15,14 @@ Route::view('/contact', 'contact');
 
 Route::resource('jobs', JobsController::class);
 
-Route::get('/login' , function(){
-   return view('auth.login') ;
-});
 
 
-Route::get('/register' , function(){
-   return view('auth.register') ;
-});
+Route::get('/login' , [loginController::class , 'create']);
+Route::post('/login' , [loginController::class , 'store']);
+
+
+Route::get('/register' , [RegisterController::class , 'create']);
+Route::post('/register' , [RegisterController::class , 'store']);
+
+
 
