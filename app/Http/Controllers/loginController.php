@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -18,7 +19,7 @@ class LoginController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
+    { 
          return view('auth.login') ;
     }
 
@@ -57,8 +58,10 @@ class LoginController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy()
-    {
-        dd(request()->all());
+    public function destroy(Request $req)
+    {    
+        // dd($req->all());
+        
+
     }
 }

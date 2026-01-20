@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -37,8 +38,9 @@ class RegisterController extends Controller
 
         ]
         ) ;
-        User::create($valid);
-
+        $user =  User::create($valid);
+        Auth::login($user);
+        
         return redirect('/jobs');
 
         
