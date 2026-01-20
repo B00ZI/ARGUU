@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class RegisterController extends Controller
 {
@@ -19,7 +20,7 @@ class RegisterController extends Controller
      */
     public function create()
     {
-        return view('auth.register') ;
+        return view('auth.register');
     }
 
     /**
@@ -27,7 +28,20 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $valid =  $request->validate([
+
+            'name' =>'required|string|min:3|max:255',
+            'email' =>'required|email',
+            'password' =>'required|min:8|confirmed'
+
+        ]
+        ) ;
+        User::create($valid);
+
+        return redirect('/jobs');
+
+        
     }
 
     /**

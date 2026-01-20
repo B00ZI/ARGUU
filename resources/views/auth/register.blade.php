@@ -3,7 +3,7 @@
         Register
     </x-slot:title>
 
-    <form action="/jobs" method="POST" class="max-w-2xl mx-auto">
+    <form action="/register" method="POST" class="max-w-2xl mx-auto">
 
         @csrf
         <div class="space-y-10">
@@ -15,7 +15,7 @@
                     <div class="sm:col-span-4">
                         <x-formlable for="name">Name</x-formlable>
                         <div class="mt-2">
-                            <x-formInput id="name" name="name" type="text" value="{{ old('name') }}" required />
+                            <x-formInput id="name" name="name" type="text" value="{{ old('name') }}"  />
                             <x-formError name="name" />
                         </div>
                     </div>
@@ -23,7 +23,7 @@
                     <div class="sm:col-span-4">
                         <x-formlable for="email">Email</x-formlable>
                         <div class="mt-2">
-                            <x-formInput id="email" name="email" type="email" value="{{ old('email') }}" required />
+                            <x-formInput id="email" name="email" type="email" value="{{ old('email') }}"  />
                             <x-formError name="email" />
                         </div>
                     </div>
