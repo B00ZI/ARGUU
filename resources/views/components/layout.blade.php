@@ -38,14 +38,22 @@
           </div>
 
           <div class="hidden gap-3.5  md:flex ">
-            <a href="/login" "
-              class=" rounded-md border-2 border-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">
-              Log in
-            </a>
-            <a href="register" "
-              class=" rounded-md border-2 border-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">
-              Register
-            </a>
+            @auth
+            <form action="/logout" method="POST" >
+              @csrf
+                <button type="submit"
+                    class="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">
+                    Log Out
+                </button>
+            </form>
+            
+            @endauth
+
+            @guest
+            <x-navLinks href="/login" :active="request()->is('login')">Log in</x-navLinks>
+            <x-navLinks href="/register" :active="request()->is('register')">Register</x-navLinks>
+            @endguest
+
 
           </div>
 
