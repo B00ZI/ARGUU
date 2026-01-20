@@ -20,9 +20,9 @@
               <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
                 alt="Your Company" class="size-8" />
             </div>
-            <div class="hidden md:block">
+            <div class="hidden    md:flex   ">
               <div class="ml-10 flex items-baseline space-x-4">
-                <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
+
 
                 <x-navLinks href="/" :active="request()->is('/')">Home</x-navLinks>
                 <x-navLinks href="/about" :active="request()->is('about')">About</x-navLinks>
@@ -30,7 +30,23 @@
                 <x-navLinks href="/jobs" :active="request()->is('jobs')">jobs</x-navLinks>
 
               </div>
+
+              <div>
+
+              </div>
             </div>
+          </div>
+
+          <div class="hidden gap-3.5  md:flex ">
+            <a href="/login" "
+              class=" rounded-md border-2 border-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">
+              Log in
+            </a>
+            <a href="register" "
+              class=" rounded-md border-2 border-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">
+              Register
+            </a>
+
           </div>
 
           <div class="-mr-2 flex md:hidden">
@@ -94,8 +110,9 @@
       class="relative bg-gray-800 after:pointer-events-none after:absolute after:inset-x-0 after:inset-y-0 after:border-y after:border-white/10">
       <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 flex justify-between">
         <h1 class="text-3xl font-bold tracking-tight text-white"> {{ $title }}</h1>
-      
-        <a href="/jobs/create" class="bg-white/90  rounded-md px-3 py-2 text-sm font-medium {{ $title  == "jobs list" ? "block" : "hidden" }}">+ Create New Job</a>
+
+        <a href="/jobs/create" class="bg-white/90  rounded-md px-3 py-2 text-sm font-medium {{ $title  == " jobs list"
+          ? "block" : "hidden" }}">+ Create New Job</a>
       </div>
     </header>
     <main>
