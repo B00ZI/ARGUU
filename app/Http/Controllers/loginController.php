@@ -19,8 +19,8 @@ class LoginController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    { 
-         return view('auth.login') ;
+    {
+        return view('auth.login');
     }
 
     /**
@@ -28,7 +28,21 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $valid = $request->validate([
+           
+            'email' => 'required|email',
+            'password' => 'required|min:8'
+
+        ]);
+
+        if (Auth::attempt($valid)){
+              return redirect('/jobs');
+
+        }else{
+  
+        return back()->withErrors(['test' =>'email or password is not currect ']);
+        }
+       
     }
 
     /**
@@ -59,10 +73,9 @@ class LoginController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy()
-    {    
-      
+    {
+
         Auth::logout();
         return  redirect('/jobs');
-
     }
 }

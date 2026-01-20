@@ -4,18 +4,18 @@
         Log In
     </x-slot:title>
 
-    <form action="/jobs" method="POST" class="max-w-2xl mx-auto">
+    <form action="/login" method="POST" class="max-w-2xl mx-auto">
 
         @csrf
         <div class="space-y-10">
             <div class="border-b border-gray-200 pb-10">
-               
-                <div class="mt-8 grid grid-cols-1  gap-6 sm:grid-cols-6">
 
+                <div class="mt-8 grid grid-cols-1  gap-6 sm:grid-cols-6">
+                    <x-formError name="test" />
                     <div class="sm:col-span-4">
                         <x-formlable for="email">Email</x-formlable>
                         <div class="mt-2">
-                            <x-formInput id="email" name="email" type="email"  value="{{ old('email') }}" required />
+                            <x-formInput id="email" name="email" type="email" value="{{ old('email') }}" required />
                             <x-formError name="email" />
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                             <x-formError name="password" />
                         </div>
                     </div>
-                    
+
 
                 </div>
             </div>
