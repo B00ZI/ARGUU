@@ -58,10 +58,11 @@ class LoginController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $req)
+    public function destroy()
     {    
-        // dd($req->all());
-        
+      
+        Auth::logout();
+        return  redirect('/jobs');
 
     }
 }
