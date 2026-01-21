@@ -13,11 +13,12 @@ Route::view('/contact', 'contact');
 
 
 
-Route::resource('jobs', JobsController::class);
+Route::resource('jobs', JobsController::class)->only(['index' , 'show' , 'create']);
+Route::resource('jobs', JobsController::class)->except(['index' , 'show' , 'create'])->middleware('auth');
 
 
 
-Route::get('/login' , [LoginController::class , 'create']);
+Route::get('/login' , [LoginController::class , 'create'])->name('login');
 Route::post('/login' , [LoginController::class , 'store']);
 Route::post('/logout' , [LoginController::class , 'destroy']);
 
