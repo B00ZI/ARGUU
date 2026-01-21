@@ -63,11 +63,7 @@ class JobsController extends Controller
     public function edit(Job $job)
     {
 
-        Gate::define('edit-post', function (User $user, Job $job) {
-
-           return  $job->employer->user->is($user);
-            
-        });
+      
 
 
         if (Auth::guest()) {
