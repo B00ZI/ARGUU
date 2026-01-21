@@ -27,9 +27,7 @@ class JobsController extends Controller
      */
     public function create()
     {       
-        if(Auth::guest()){
-            return redirect('/login');
-        }
+      
 
         return view('jobs.create');
     }
@@ -66,11 +64,6 @@ class JobsController extends Controller
      */
     public function edit(Job $job)
     {
-
-    
-
-        Gate::authorize('edit-job' , $job );
-
 
         return view('jobs.edit', ['job' => $job]);
     }
