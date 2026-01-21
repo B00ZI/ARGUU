@@ -22,17 +22,17 @@ Route::get('/jobs/{job}', [JobsController::class, 'show'])->name('jobs.show');
 
 Route::get('/jobs/{job}/edit', [JobsController::class, 'edit'])
 ->middleware('auth')
-->can('edit-job', 'job')
+->can('edit', 'job')
 ->name('jobs.edit');
 
 Route::put('/jobs/{job}', [JobsController::class, 'update'])
 ->middleware('auth')
-->can('edit-job', 'job')
+->can('edit', 'job')
 ->name('jobs.update');
 
 Route::delete('/jobs/{job}', [JobsController::class, 'destroy'])
 ->middleware('auth')
-->can('edit-job', 'job')
+->can('edit', 'job')
 ->name('jobs.destroy');
 
 

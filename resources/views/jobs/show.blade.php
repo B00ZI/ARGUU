@@ -7,7 +7,7 @@
    <h1>job title : {{ $job['title'] }}</h1>
    <p>job salary : {{ $job['salary'] }}</p>
      
-   @can('edit-job' , $job)
+   @can('edit' , $job)
        <x-button href='/jobs/{{ $job->id }}/edit'>edit</x-button>
    @endcan
   
