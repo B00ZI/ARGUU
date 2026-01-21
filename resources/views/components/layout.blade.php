@@ -39,14 +39,14 @@
 
           <div class="hidden gap-3.5  md:flex ">
             @auth
-            <form action="/logout" method="POST" >
+            <form action="/logout" method="POST">
               @csrf
-                <button type="submit"
-                    class="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">
-                    Log Out
-                </button>
+              <button type="submit"
+                class="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">
+                Log Out
+              </button>
             </form>
-            
+
             @endauth
 
             @guest

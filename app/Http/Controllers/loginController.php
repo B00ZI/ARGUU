@@ -36,11 +36,13 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($valid)){
+               
+              $request->session()->regenerate();
               return redirect('/jobs');
 
         }else{
   
-        return back()->withErrors(['test' =>'email or password is not currect ']);
+        return back()->withErrors(['email' =>'email or password is not currect ']);
         }
        
     }

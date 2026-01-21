@@ -9,9 +9,9 @@
         @csrf
         <div class="space-y-10">
             <div class="border-b border-gray-200 pb-10">
-
+                
                 <div class="mt-8 grid grid-cols-1  gap-6 sm:grid-cols-6">
-                    <x-formError name="test" />
+
                     <div class="sm:col-span-4">
                         <x-formlable for="email">Email</x-formlable>
                         <div class="mt-2">
