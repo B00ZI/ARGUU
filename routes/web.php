@@ -3,9 +3,18 @@
 use App\Http\Controllers\JobsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Mail\JobPosted;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 
+
+Route::ger('test', function () {
+    Mail::to('bozibox500@gmail.com')->send(
+        new JobPosted()
+    );
+    return 'done';
+});
 
 Route::view('/', 'home');
 Route::view('/about', 'about');
@@ -15,34 +24,31 @@ Route::get('/jobs', [JobsController::class, 'index'])->name('jobs.index');
 Route::get('/jobs/create', [JobsController::class, 'create'])->middleware('auth')->name('jobs.create');
 
 Route::post('/jobs', [JobsController::class, 'store'])
-->middleware('auth')
-->name('jobs.store');
+    ->middleware('auth')
+    ->name('jobs.store');
 
 Route::get('/jobs/{job}', [JobsController::class, 'show'])->name('jobs.show');
 
 Route::get('/jobs/{job}/edit', [JobsController::class, 'edit'])
-->middleware('auth')
-->can('edit', 'job')
-->name('jobs.edit');
+    ->middleware('auth')
+    ->can('edit', 'job')
+    ->name('jobs.edit');
 
 Route::patch('/jobs/{job}', [JobsController::class, 'update'])
-->middleware('auth')
-->can('edit', 'job')
-->name('jobs.update');
+    ->middleware('auth')
+    ->can('edit', 'job')
+    ->name('jobs.update');
 
 Route::delete('/jobs/{job}', [JobsController::class, 'destroy'])
-->middleware('auth')
-->can('edit', 'job')
-->name('jobs.destroy');
+    ->middleware('auth')
+    ->can('edit', 'job')
+    ->name('jobs.destroy');
 
 
-Route::get('/login' , [LoginController::class , 'create'])->name('login');
-Route::post('/login' , [LoginController::class , 'store']);
-Route::post('/logout' , [LoginController::class , 'destroy']);
+Route::get('/login', [LoginController::class, 'create'])->name('login');
+Route::post('/login', [LoginController::class, 'store']);
+Route::post('/logout', [LoginController::class, 'destroy']);
 
 
-Route::get('/register' , [RegisterController::class , 'create']);
-Route::post('/register' , [RegisterController::class , 'store']);
-
-
-
+Route::get('/register', [RegisterController::class, 'create']);
+Route::post('/register', [RegisterController::class, 'store']);
