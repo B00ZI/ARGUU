@@ -12,7 +12,7 @@ Route::view('/about', 'about');
 Route::view('/contact', 'contact');
 
 Route::get('/jobs', [JobsController::class, 'index'])->name('jobs.index');
-Route::get('/jobs/create', [JobsController::class, 'create'])->name('jobs.create');
+Route::get('/jobs/create', [JobsController::class, 'create'])->middleware('auth')->name('jobs.create');
 
 Route::post('/jobs', [JobsController::class, 'store'])
 ->middleware('auth')
@@ -25,7 +25,7 @@ Route::get('/jobs/{job}/edit', [JobsController::class, 'edit'])
 ->can('edit', 'job')
 ->name('jobs.edit');
 
-Route::put('/jobs/{job}', [JobsController::class, 'update'])
+Route::patch('/jobs/{job}', [JobsController::class, 'update'])
 ->middleware('auth')
 ->can('edit', 'job')
 ->name('jobs.update');
