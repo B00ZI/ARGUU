@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::ger('test', function () {
+Route::get('test', function () {
     Mail::to('bozibox500@gmail.com')->send(
         new JobPosted()
     );
