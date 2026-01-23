@@ -3,18 +3,10 @@
 use App\Http\Controllers\JobsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-use App\Mail\JobPosted;
-use Illuminate\Support\Facades\Mail;
+
 use Illuminate\Support\Facades\Route;
 
 
-
-Route::get('test', function () {
-    Mail::to('bozibox500@gmail.com')->send(
-        new JobPosted()
-    );
-    return 'done';
-});
 
 Route::view('/', 'home');
 Route::view('/about', 'about');

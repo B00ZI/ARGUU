@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\JobListing as Job;
 use App\Models\User;
-
+use App\Mail\JobPosted;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
@@ -26,8 +27,8 @@ class JobsController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {       
-      
+    {
+
 
         return view('jobs.create');
     }
@@ -42,11 +43,15 @@ class JobsController extends Controller
             'salary' => ['required', 'min:3']
         ]);
 
-        Job::create([
+        $job = Job::create([
             'title' => $request->title,
             'salary' => $request->salary,
             'employer_id' => 1,
         ]);
+
+        Mail::to($job->employer->user)->send(
+            new JobPosted($job)
+        );
 
         return redirect('/jobs');
     }
